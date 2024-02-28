@@ -1,0 +1,35 @@
+<html>
+
+<body>
+    <h1>
+        C tutorials
+    </h1>
+    <audio id="java" src="audios/java.mp3"></audio>
+    <audio id="correct" src="audios/correct.mp3"></audio>
+    <p id="description"></p>
+</body>
+<script>
+    let start = 0;
+    let sentence = [];
+    let answer = ''
+    document.addEventListener('keydown',(e)=>{
+            if(e.key == ' ' && start == 0){
+                start = 1;
+                document.getElementById('java').play();
+                document.getElementById('description').innerText = "Java is an object oriented programming language.</br>Question: Print Hello world"
+            }else if(e.key=="Enter" && e.shiftKey){
+                console.log("answer submitted");
+                answer = sentence.join('');
+                console.log(answer);
+                if(answer == "Hello"){
+                    document.getElementById('correct').play();
+                }
+                sentence = [];
+                    answer = ''
+            }else if(e.key != "Shift"){
+                sentence.push(e.key);
+                console.log("key pressed");
+            }
+        })
+</script>
+</html>

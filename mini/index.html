@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mini Project</title>
+    </head>
+    <body>
+        <h1>Blind Coder</h1>
+        <h2>WELCOME TO FUN LEARNING<br>
+
+
+            CLICK 1 TO LEARN JAVA<br>
+            
+            CLICK 2 TO LEARN C<br>
+            
+            CLICK 3 TO LEARN PYTHON</h2>
+        <audio id="welcome" src="audios/welcome.mp3" ></audio>
+        <p id="description"></p>
+        <style>
+            body {
+                background-image: url("bg.png");
+            }
+        </style>
+    </body>
+    <script defer>
+        document.addEventListener('keydown',(e)=>{
+            if(e.key == ' '){
+                document.getElementById('welcome').play();
+            }else if(e.key == '1'){
+                window.location = "java.html"
+            }
+            else if(e.key == '2'){
+                window.location = "c.html"
+            }
+            else if(e.key == '3'){
+                window.location = "python.html"
+            }
+        })
+    </script>
+</html>
