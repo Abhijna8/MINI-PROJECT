@@ -27,8 +27,8 @@ public class Main {<br>
 </h1>
 </div>
     
-    <audio id="java" src="audios/java1.mp3"></audio>
-    <audio id="java2" src="audios/java2.mp3"></audio>
+    <audio id="java" src="audios/java.mp4"></audio>
+    
     <audio id="correct" src="audios/correct.mp3"></audio>
     <p id="description"></p>
 </body>
@@ -39,6 +39,7 @@ public class Main {<br>
     document.addEventListener('keydown',(e)=>{
             if(e.key == ' ' && start == 0){
                 start = 1;
+                document.getElementById('java').play();
                 document.getElementById('java').play();
                 document.getElementById('description').innerText = "Java is an object oriented programming language.</br>Question: Print Hello world"
             }else if(e.key=="Enter" && e.shiftKey){
