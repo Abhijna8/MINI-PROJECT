@@ -6,45 +6,59 @@
     <style>
         body {
             background-image: url("pythonn.jpg");
+            
         }
     </style>
     <div class="w3-container w3-center w3-animate-zoom">
-        <h1> <p style="font-family:Brush Script MT;">
+        <h1> <p style="font-family: 'Times New Roman', serif;">
    
-        Python is a popular programming language.<br>
-Python can be used on a server to create web applications.<br>
+        <b>Python is a popular programming language.<br>
+Python can be used on a server to create web applications.</b><br>
 Let us try a simple hello world program<br>
 
-print("Hello, World!")<br>
+print("Hello World")<br>
 
 Try this
     </h1>
+    <p id="typed"></p>
+    
     <audio id="java" src="audios/python1.mp3"></audio>
+    
     <audio id="correct" src="audios/correct.mp3"></audio>
+    <audio id="incorrect" src="audios/incorrect.wav"></audio>
     <p id="description"></p>
 </body>
 <script>
     let start = 0;
     let sentence = [];
-    let answer = ''
+    let answer = '';
+    let typed = document.getElementById('typed');
     document.addEventListener('keydown',(e)=>{
             if(e.key == ' ' && start == 0){
                 start = 1;
                 document.getElementById('java').play();
-                document.getElementById('description').innerText = "Java is an object oriented programming language.</br>Question: Print Hello world"
+                document.getElementById('java').play();
             }else if(e.key=="Enter" && e.shiftKey){
                 console.log("answer submitted");
                 answer = sentence.join('');
                 console.log(answer);
-                if(answer == "Hello"){
+                if(answer == "print(''Hello World'')"){
                     document.getElementById('correct').play();
+                }
+                else{
+                    document.getElementById('incorrect').play();
                 }
                 sentence = [];
                     answer = ''
-            }else if(e.key != "Shift"){
+            }else if(e.key.length == 1){
                 sentence.push(e.key);
                 console.log("key pressed");
+            }else if(e.key == "Enter"){
+                sentence.push("\n");
+            }else if(e.key == "Backspace"){
+                sentence.pop();
             }
+            typed.innerText = sentence.join('');
         })
 </script>
 </html>

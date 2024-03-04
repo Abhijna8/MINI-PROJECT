@@ -6,48 +6,61 @@
     <style>
         body {
             background-image: url("c.jpg");
+            
         }
     </style>
     <div class="w3-container w3-center w3-animate-zoom">
         <h1> <p style="font-family:Brush Script MT;">
     
-        C is a general-purpose programming language and still quite popular.<br>C is very powerful; it has been used to develop operating systems, databases, applications, etc.
+        C is a general-purpose programming language and still quite popular.<br>C is very powerful; it has been used to develop operating systems, databases, applications, etc.</h1>
         <h2> <p style="font-family:Brush Script MT;"><br>Let us try a simple hello world program<br>Pre learn:<br>
 #include< stdio.h ><br>
 
     int main() {<br>
-      printf("Hello World!");<br>
+      printf("Hello World");<br>
       return 0;<br>
     }
 </p>
 </p>
     </h2>
+    <p id="typed"></p>
+    
     <audio id="java" src="audios/c.mp4"></audio>
+    
     <audio id="correct" src="audios/correct.mp3"></audio>
+    <audio id="incorrect" src="audios/incorrect.wav"></audio>
     <p id="description"></p>
 </body>
 <script>
     let start = 0;
     let sentence = [];
-    let answer = ''
+    let answer = '';
+    let typed = document.getElementById('typed');
     document.addEventListener('keydown',(e)=>{
             if(e.key == ' ' && start == 0){
                 start = 1;
                 document.getElementById('java').play();
-                document.getElementById('description').innerText = "Java is an object oriented programming language.</br>Question: Print Hello world"
             }else if(e.key=="Enter" && e.shiftKey){
                 console.log("answer submitted");
                 answer = sentence.join('');
                 console.log(answer);
-                if(answer == "Hello"){
+                if(answer == "#include<stdio.h> int main(){ printf(''Hello world''); }"){
                     document.getElementById('correct').play();
+                }
+                else{
+                    document.getElementById('incorrect').play();
                 }
                 sentence = [];
                     answer = ''
-            }else if(e.key != "Shift"){
+            }else if(e.key.length == 1){
                 sentence.push(e.key);
                 console.log("key pressed");
+            }else if(e.key == "Enter"){
+                sentence.push("\n");
+            }else if(e.key == "Backspace"){
+                sentence.pop();
             }
+            typed.innerText = sentence.join('');
         })
 </script>
 </html>
